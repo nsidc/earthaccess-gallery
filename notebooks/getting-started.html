@@ -327,18 +327,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="search-for-sea-surface-height-data">Search for Sea Surface Height Data</h2>
 <p>Let’s find the first four collections that match a keyword search for <code>Sea Surface Height</code> and print out the first two.</p>
 <div class="cell" data-tags="[]">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>max_results <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> earthaccess.search_datasets(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    keyword <span class="op">=</span> <span class="st">"SEA SURFACE HEIGHT"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    cloud_hosted <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> max_results</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's print 2 collections</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections[<span class="dv">0</span>:<span class="dv">2</span>]:</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pprint(collection.summary())</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pprint(collection.summary()), collection.abstract(), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, collection[<span class="st">"umm"</span>][<span class="st">"DOI"</span>], <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>max_results <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> earthaccess.search_datasets(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    keyword <span class="op">=</span> <span class="st">"SEA SURFACE HEIGHT"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    cloud_hosted <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> max_results</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's print 2 collections</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections[<span class="dv">0</span>:<span class="dv">2</span>]:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># pprint(collection.summary())</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pprint(collection.summary()), collection.abstract(), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, collection[<span class="st">"umm"</span>][<span class="st">"DOI"</span>], <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="access-data" class="level2">
@@ -407,8 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Next, we find and open the historic record dataset also using <code>earthaccess</code> and <code>xarray</code>.</p>
 <div class="cell" data-tags="[]">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>historic_ts_results <span class="op">=</span> earthaccess.search_data(short_name<span class="op">=</span><span class="st">'JPL_RECON_GMSL'</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>historic_ts<span class="op">=</span>xr.open_mfdataset(earthaccess.<span class="bu">open</span>([historic_ts_results[<span class="dv">0</span>]]), engine<span class="op">=</span><span class="st">'h5netcdf'</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>historic_ts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>historic_ts<span class="op">=</span>xr.open_mfdataset(earthaccess.<span class="bu">open</span>([historic_ts_results[<span class="dv">0</span>]]), engine<span class="op">=</span><span class="st">'h5netcdf'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lets-plot" class="level2">
