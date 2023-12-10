@@ -1,0 +1,50 @@
+name: earthaccess
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - earthaccess>=0.8.2
+  - dask
+  - rioxarray
+  - xarray>=2022.12
+  - h5netcdf
+  - netcdf4>=1.6.4
+  - h5py
+  - gdal~=3.7
+  - geoviews
+  - holoviews=1.16.2
+  - matplotlib
+  - hvplot
+  - datashader
+  - pyproj
+  - bqplot
+  - geopandas
+  - zarr
+  - cartopy
+  - shapely
+  - joblib
+  - pystac-client
+  - pydap
+  - ipyleaflet
+  # when jlab 4 gets released we can upgrade dask-labextension
+  - dask-labextension==6.2.0
+  - ipywidgets
+  - jupyter-book
+  - jupyter-cache
+  - jupyterlab<4
+  - jupyterlab-myst
+  - jupyterhub-singleuser
+  - jupyterlab-geojson
+  - jupyterlab-favorites
+  - jupyterlab-git
+  - jupyter-resource-usage<1.0.0a
+  - jupyterlab-h5web<8.0
+  - ipympl
+  - h5coro
+  - itslive
+  - kerchunk
+  - nbgitpuller
+platforms:
+  - linux-64
+  - osx-64
+  - win-64

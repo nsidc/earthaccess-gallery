@@ -1,0 +1,1 @@
+Sitemap: https://nsidc.github.io/earthaccess-gallery/sitemap.xml

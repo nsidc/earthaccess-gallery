@@ -1,0 +1,57 @@
+project: 
+  type: website
+
+execute:
+  freeze: auto  
+  cache: true
+
+website:
+  title: "earthaccess gallery"
+  site-url: https://nsidc.github.io/earthaccess-gallery
+  repo-url: https://github.com/nsidc/earthaccess-gallery
+  repo-actions: [edit, issue]
+  page-navigation: true
+ 
+  navbar: 
+    background: primary
+    right: 
+      - sidebar:welcome
+      - icon: github
+        href: https://github.com/nsidc/earthaccess-gallery
+ 
+  sidebar:
+    - id: gallery
+      title: "Menu"
+      logo: https://user-images.githubusercontent.com/717735/263752096-d5af4c79-dd6f-47fb-9036-75202ad56650.png
+      style: "docked"
+      collapse-level: 1
+      align: left
+      contents:
+        - section: "Getting started"
+          contents: 
+            - href: notebooks/slides.md
+              text: "Why earthaccess?"
+            - href: notebooks/getting-started.ipynb
+              text: "Getting started with earthaccess"
+        - section: "A dive into access patterns and data exploration"
+          contents: 
+            - href: notebooks/earthaccess-kerchunk.ipynb
+              text: "Virtual datasets with earthaccess and Kerchunk"
+            - href: notebooks/explore.ipynb
+              text: "Searching for concurrent datasets"
+            - href: notebooks/custom-maps.ipynb
+              text: "Interactive search with custom maps"
+
+          
+format:
+  html:
+    theme:
+      light: sandstone
+      dark: [sandstone, theme-dark.scss]
+    code-background: true
+    code-copy: true
+    css: styles.css
+    toc: true
+    grid:
+      sidebar-width: 250px
+
