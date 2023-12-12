@@ -29,7 +29,7 @@ website:
       contents:
         - section: "Getting started"
           contents: 
-            - href: notebooks/slides.md
+            - href: index.md
               text: "Why earthaccess?"
             - href: notebooks/getting-started.ipynb
               text: "Getting started with earthaccess"
